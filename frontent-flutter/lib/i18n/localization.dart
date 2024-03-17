@@ -1,21 +1,20 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'locale_controller.dart';
 
-AppLocalization appLocalizationGetter(BuildContext context) =>
-    Localizations.of<AppLocalization>(context, AppLocalization)!;
-
 class AppLocalization {
-  final BuildContext context;
-  const AppLocalization(this.context);
+  final Locale locale;
+  const AppLocalization(this.locale);
 
   Map? get _localizedStrings => LocaleAsset.localeAsset;
 
   Future<void> load() async {
-    final String localeId =
-        Provider.of<LocalePref>(context).currentLocale.languageCode;
-    await LocaleAsset.getAsset(localeId);
+    await LocaleAsset.getAsset(locale.languageCode);
+  }
+
+  static AppLocalization of(BuildContext context) {
+    return Localizations.of<AppLocalization>(context, AppLocalization)!;
   }
 
   String getString(String key) {
@@ -38,7 +37,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
 
   @override
   Future<AppLocalization> load(Locale locale) async {
-    final localizations = AppLocalization(context);
+    final localizations = AppLocalization(locale);
     await localizations.load();
     return localizations;
   }

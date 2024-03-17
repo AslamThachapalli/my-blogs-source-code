@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Text(
-              appLocalizationGetter(context).getString('greetings'),
+              AppLocalization.of(context).getString('greetings'),
             )
           ],
         ),
