@@ -1,5 +1,6 @@
 {
-  "supportedLocales": [
+  "status": "success",
+  "data": [
     "en",
     "hi",
     "ar"

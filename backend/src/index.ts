@@ -9,7 +9,7 @@ app.get('/', (c) => {
   return c.text('Hello Hono!');
 })
 
-app.get('/supported-locales', (c) => {
+app.get('localize/supported-locales', (c) => {
   return c.json({
     status: 'success',
     data: [
@@ -20,7 +20,7 @@ app.get('/supported-locales', (c) => {
   });
 })
 
-app.get('/:id', (c) => {
+app.get('localize/:id', (c) => {
   const localeId = c.req.param('id');
 
   let localeData;

@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class LocaleDatasource {
-  static String baseUrl = 'https://backend.aslam-develop912.workers.dev';
+  static String baseUrl =
+      'https://backend.aslam-develop912.workers.dev/localize';
 
   static Future<List<String>?> getSupportedLocales() async {
     try {
